@@ -5,7 +5,7 @@ data class Response(
     val accessibility: Float,
     val type: String,
     val participants: Int,
-    val price: Float,
+    val price: Double,
     val link: String,
     val key: Long
 )
