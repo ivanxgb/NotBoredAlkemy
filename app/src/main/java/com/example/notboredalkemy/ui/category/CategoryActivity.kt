@@ -1,5 +1,6 @@
 package com.example.notboredalkemy.ui.category
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -9,6 +10,7 @@ import com.example.notboredalkemy.R
 import com.example.notboredalkemy.databinding.ActivityCategoryBinding
 import com.example.notboredalkemy.databinding.ToolbarBaseBinding
 import com.example.notboredalkemy.ui.adapter.BoringAdapter
+import com.example.notboredalkemy.ui.boring.NotBoringActivity
 import com.example.notboredalkemy.utils.Utils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -49,6 +51,7 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun callbackCategory(category: String) {
         Utils.category = category
+        startActivity(Intent(this, NotBoringActivity::class.java))
     }
 
     private fun setUpObserver() {
