@@ -46,7 +46,6 @@ class HomeActivity : AppCompatActivity() {
     private fun captureParticipants() {
         participants = binding.etParticipants.text.toString()
         viewModel.validateParticipants(participants)
-        Utils.participants = participants.toInt()
     }
 
     private fun setUpOnClickListener() {
@@ -55,6 +54,7 @@ class HomeActivity : AppCompatActivity() {
         }
         binding.btnStart.setOnClickListener {
         if (binding.btnStart.isEnabled) {
+            Utils.participants = participants.toInt()
             startActivity(Intent(this, CategoryActivity::class.java))
             }
         }

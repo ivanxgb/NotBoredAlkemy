@@ -6,7 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notboredalkemy.databinding.CategoryItemBinding
 
-class BoringAdapter(private val categories: List<String>): RecyclerView.Adapter<BoringAdapter.ViewHolder>() {
+class BoringAdapter(
+        private val categories: List<String>,
+        private var listenerCategory: (String) -> Unit
+): RecyclerView.Adapter<BoringAdapter.ViewHolder>() {
 
     private lateinit var mContext: Context
 
@@ -16,15 +19,18 @@ class BoringAdapter(private val categories: List<String>): RecyclerView.Adapter<
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(categories[position])
-    }
-
     override fun getItemCount(): Int = categories.size
 
-    class ViewHolder(private val binding: CategoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(category: String) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bindData(categories[position], listenerCategory)
+    }
+
+
+    class ViewHolder( private val binding: CategoryItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bindData(category: String, listenerCategory: (String) -> Unit) {
             binding.tvCategoryName.text = category
+            binding.clCategory.setOnClickListener { listenerCategory.invoke(category) }
         }
     }
+
 }

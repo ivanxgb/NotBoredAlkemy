@@ -43,8 +43,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvParticipants"
         app:layout_constraintStart_toStartOf="parent"
         android:digits="0123456789"
-        android:hint="@string/hintET"
-        android:autofillHints="" />
+        android:hint="@string/hintET" />
 
     <Button
         android:id="@+id/btnStart"

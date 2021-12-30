@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="horizontalMargin">32dp</dimen>
+    <dimen name="marginL">32dp</dimen>
     <dimen name="paddingET">8dp</dimen>
+    <dimen name="textTitleSize">32sp</dimen>
+    <dimen name="textPrincipalSize">48sp</dimen>
+    <dimen name="marginXXL">128dp</dimen>
+    <dimen name="marginS">8dp</dimen>
+    <dimen name="marginM">16dp</dimen>
+    <dimen name="marginXL">64dp</dimen>
+    <dimen name="heightL">64dp</dimen>
 </resources>
