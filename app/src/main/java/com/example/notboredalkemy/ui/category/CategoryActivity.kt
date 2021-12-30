@@ -1,21 +1,16 @@
 package com.example.notboredalkemy.ui.category
 
 import android.os.Bundle
-<<<<<<< HEAD
 import androidx.appcompat.app.AppCompatActivity
-=======
 import android.view.View
 import android.widget.TextView
->>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notboredalkemy.R
 import com.example.notboredalkemy.databinding.ActivityCategoryBinding
-<<<<<<< HEAD
-=======
+
 import com.example.notboredalkemy.databinding.ActivityHomeBinding
->>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c
 import com.example.notboredalkemy.databinding.ToolbarBaseBinding
 import com.example.notboredalkemy.ui.adapter.BoringAdapter
 import com.example.notboredalkemy.utils.Utils
@@ -28,10 +23,8 @@ class CategoryActivity : AppCompatActivity() {
     private val viewModel: CategoryViewModel by viewModel()
     private val listOfCategories = mutableListOf<String>()
     private lateinit var binding: ActivityCategoryBinding
-<<<<<<< HEAD
-=======
+
     private var categoryList: List<String> = listOf()
->>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c
     private lateinit var bindingToolbar: ToolbarBaseBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,7 +57,6 @@ class CategoryActivity : AppCompatActivity() {
         }
     }
 
-<<<<<<< HEAD
     private fun callbackCategory(category: String) {
         Utils.category = category
     }
@@ -79,13 +71,11 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     private fun noCategoriesAvailable() {
-=======
     private fun setUpOnClickListener() {
         val a = 0
     }
 
     private fun setUpObserver() {
->>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c
         val a = 0
     }
 }

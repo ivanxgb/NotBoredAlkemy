@@ -6,8 +6,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.boring.NotBoringActivity">
 
-<<<<<<< HEAD
-=======
     <include
         android:id="@+id/include"
         layout="@layout/toolbar_base" />
@@ -30,12 +28,5 @@
         android:src="@drawable/ic_baseline_person_24"
         app:layout_constraintStart_toStartOf="parent"
         />
-
-
-
-
-
-
->>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c
 
 </androidx.constraintlayout.widget.ConstraintLayout>

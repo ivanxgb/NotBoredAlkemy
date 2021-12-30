@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-<<<<<<< HEAD
-    android:layout_height="match_parent"
-=======
     android:layout_height="wrap_content"
->>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/baseToolbar">
@@ -43,7 +39,6 @@
         android:layout_height="wrap_content"
         android:background="#00000000"
         android:src="@drawable/random"
-<<<<<<< HEAD
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
@@ -66,26 +61,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.589"
         tools:visibility="visible" />
-=======
-        app:layout_constraintBottom_toBottomOf="@id/toolbar"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintStart_toEndOf="@id/tvToolbarTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="invisible"
-        tools:visibility="visible"/>
-
-    <androidx.constraintlayout.utils.widget.ImageFilterButton
-        android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:src="@drawable/arrow_back"
-        app:layout_constraintBottom_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/tvToolbarTitle"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="invisible"
-        tools:visibility="visible"/>
->>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c
 
 </androidx.constraintlayout.widget.ConstraintLayout>

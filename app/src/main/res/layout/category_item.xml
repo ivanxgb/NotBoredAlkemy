@@ -8,11 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clCategory"
         android:layout_width="match_parent"
-<<<<<<< HEAD
         android:layout_height="70dp">
-=======
-        android:layout_height="@dimen/heightL">
->>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c
 
         <TextView
             android:id="@+id/tvCategoryName"
