@@ -3,11 +3,15 @@ package com.example.notboredalkemy.ui.category
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notboredalkemy.R
 import com.example.notboredalkemy.databinding.ActivityCategoryBinding
+
+import com.example.notboredalkemy.databinding.ActivityHomeBinding
 import com.example.notboredalkemy.databinding.ToolbarBaseBinding
 import com.example.notboredalkemy.ui.adapter.BoringAdapter
 import com.example.notboredalkemy.ui.boring.NotBoringActivity
@@ -21,11 +25,17 @@ class CategoryActivity : AppCompatActivity() {
     private val viewModel: CategoryViewModel by viewModel()
     private val listOfCategories = mutableListOf<String>()
     private lateinit var binding: ActivityCategoryBinding
+
+    private var categoryList: List<String> = listOf()
     private lateinit var bindingToolbar: ToolbarBaseBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCategoryBinding.inflate(layoutInflater)
+        bindingToolbar = ToolbarBaseBinding.bind(binding.root)
+        bindingToolbar.tvToolbarTitle.text = getString(R.string.activitiesUI)
+        bindingToolbar.btnRandom.isVisible = true
+
         setContentView(binding.root)
         setUpTextInToolbar()
         setUpRecyclerView()
@@ -64,6 +74,11 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     private fun noCategoriesAvailable() {
+    private fun setUpOnClickListener() {
+        val a = 0
+    }
+
+    private fun setUpObserver() {
         val a = 0
     }
 }
