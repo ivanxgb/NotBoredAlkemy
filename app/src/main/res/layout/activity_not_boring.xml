@@ -4,35 +4,137 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.boring.NotBoringActivity">
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar_base" />
+    tools:context=".ui.boring.NotBoringActivity"
+    >
+    <include layout="@layout/toolbar_base" />
 
     <TextView
-        android:id="@+id/tvTitleActivity"
-        style="@style/TextAppearance.AppCompat.SearchResult.Title"
+        android:id="@+id/tvActivityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:hyphenationFrequency="full"
+        android:textAlignment="center"
+        android:textSize="@dimen/textTitleSize"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/include"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.201"
         tools:text="Learn how to play a new sport" />
 
     <ImageView
+        android:id="@+id/ivParticipants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tvTitleActivity"
         android:src="@drawable/ic_baseline_person_24"
+        app:layout_constraintTop_toBottomOf="@id/tvActivityName"
         app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/marginL"
+        android:layout_marginTop="@dimen/marginXL"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvParticipantsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/participants"
+        app:layout_constraintTop_toTopOf="@id/ivParticipants"
+        style="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintStart_toEndOf="@id/ivParticipants"
+        android:layout_marginStart="@dimen/marginM"
         />
 
 
+    <TextView
+        android:id="@+id/tvParticipantsNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="1"
+        app:layout_constraintTop_toTopOf="@id/tvParticipantsTitle"
+        style="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/marginL"
+        />
 
 
+    <ImageView
+        android:id="@+id/ivMoney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_person_24"
+        app:layout_constraintTop_toBottomOf="@id/ivParticipants"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/marginL"
+        android:layout_marginTop="@dimen/marginXL"
+        tools:ignore="ContentDescription" />
 
+    <TextView
+        android:id="@+id/tvMoneyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Money"
+        app:layout_constraintTop_toTopOf="@id/ivMoney"
+        style="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintStart_toEndOf="@id/ivMoney"
+        android:layout_marginStart="@dimen/marginM"
+        />
+
+
+    <TextView
+        android:id="@+id/tvMoneyAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Medium"
+        style="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintTop_toTopOf="@id/tvMoneyTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/marginL"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/viewCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/ivMoney"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/marginL"
+        android:layout_marginTop="@dimen/marginXL"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        tools:ignore="UseCompoundDrawables">
+
+        <ImageView
+            android:id="@+id/ivCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_category_24"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:id="@+id/tvCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Relaxation"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_marginStart="@dimen/marginM"
+            />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btnTryAnother"
+        android:layout_marginHorizontal="@dimen/marginM"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Try Another"
+        app:layout_constraintTop_toBottomOf="@id/viewCategory"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
