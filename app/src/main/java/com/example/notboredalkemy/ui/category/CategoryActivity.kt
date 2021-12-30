@@ -2,11 +2,15 @@ package com.example.notboredalkemy.ui.category
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notboredalkemy.R
 import com.example.notboredalkemy.databinding.ActivityCategoryBinding
 import com.example.notboredalkemy.databinding.ActivityHomeBinding
+import com.example.notboredalkemy.databinding.ToolbarBaseBinding
 import com.example.notboredalkemy.ui.adapter.BoringAdapter
 
 class CategoryActivity : AppCompatActivity() {
@@ -15,10 +19,15 @@ class CategoryActivity : AppCompatActivity() {
     private var adapter: BoringAdapter? = null
     private lateinit var binding: ActivityCategoryBinding
     private var categoryList: List<String> = listOf()
+    private lateinit var bindingToolbar: ToolbarBaseBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCategoryBinding.inflate(layoutInflater)
+        bindingToolbar = ToolbarBaseBinding.bind(binding.root)
+        bindingToolbar.tvToolbarTitle.text = getString(R.string.activitiesUI)
+        bindingToolbar.btnRandom.isVisible = true
+
         setContentView(binding.root)
         setUpOnClickListener()
         setUpRecyclerView()
@@ -36,10 +45,10 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     private fun setUpOnClickListener() {
-        TODO("Not yet implemented")
+        val a = 0
     }
 
     private fun setUpObserver() {
-        TODO("Not yet implemented")
+        val a = 0
     }
 }
