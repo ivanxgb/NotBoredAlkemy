@@ -16,6 +16,7 @@
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/marginL"
         android:background="#00000000"
         tools:ignore="ContentDescription" />
 
@@ -28,7 +29,8 @@
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="@dimen/marginXL"
+        android:layout_marginHorizontal="@dimen/marginM"
         />
 
 
@@ -62,6 +64,7 @@
             style="@style/TextAppearance.AppCompat.Body1"
             android:justificationMode="inter_word"
             android:hyphenationFrequency="full"
+            android:layout_marginHorizontal="@dimen/marginM"
             android:text="@string/lorem"
             />
     </ScrollView>
