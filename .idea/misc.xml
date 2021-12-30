@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/arrow_back.xml" value="0.32175925925925924" />
+        <entry key="app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.340625" />
+        <entry key="app/src/main/res/drawable/ic_baseline_category_24.xml" value="0.340625" />
+        <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.340625" />
         <entry key="app/src/main/res/drawable/random.xml" value="0.32175925925925924" />
         <entry key="app/src/main/res/drawable/rounded_corner_et.xml" value="0.32175925925925924" />
         <entry key="app/src/main/res/layout/activity_category.xml" value="0.2489754098360656" />
