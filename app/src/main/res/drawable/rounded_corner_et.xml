@@ -12,4 +12,8 @@
     <!--- This is the background color -->
     <solid android:color="#fff" />
 
+<<<<<<< HEAD
 </shape>
+=======
+</shape>
+>>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <dimen name="horizontalMargin">32dp</dimen>
+=======
+>>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c
     <dimen name="marginL">32dp</dimen>
     <dimen name="paddingET">8dp</dimen>
     <dimen name="textTitleSize">32sp</dimen>

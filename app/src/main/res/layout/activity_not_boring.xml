@@ -3,7 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.boring.NotBoringActivity">
 
+<<<<<<< HEAD
+=======
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_base" />
+
+    <TextView
+        android:id="@+id/tvTitleActivity"
+        style="@style/TextAppearance.AppCompat.SearchResult.Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include"
+        tools:text="Learn how to play a new sport" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvTitleActivity"
+        android:src="@drawable/ic_baseline_person_24"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+
+
+
+
+
+>>>>>>> 08de0cbb12dd55aec61c6e993ed8fbf8fb805a8c
 
 </androidx.constraintlayout.widget.ConstraintLayout>
