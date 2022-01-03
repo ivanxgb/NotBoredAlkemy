@@ -1,5 +1,6 @@
 package com.example.notboredalkemy.ui.home
 
+import android.widget.CheckBox
 import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,9 +14,9 @@ class HomeViewModel : ViewModel() {
     private val _dataResponseValidate: MutableLiveData<Pair<Boolean, Any?>> = MutableLiveData()
     val dataResponseValid: LiveData<Pair<Boolean, Any?>> get() = _dataResponseValidate
 
-    fun validateParticipants(participants: String){
+    fun validateParticipantsAndTermsSelected(participants: String, checkBox: CheckBox){
         viewModelScope.launch {
-        if(participants.isDigitsOnly()){
+        if(participants.isDigitsOnly() && checkBox.isSelected){
             participantsValid = true
             _dataResponseValidate.postValue(Pair(participantsValid, "Success"))
         }else{

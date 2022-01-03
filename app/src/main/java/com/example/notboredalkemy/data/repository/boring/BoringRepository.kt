@@ -5,5 +5,6 @@ import com.example.notboredalkemy.data.Result
 interface BoringRepository {
 
     suspend fun getActivityType(type: String, participants: Int): Result<Any>
+    suspend fun getRandomActivity(): Result<Any>
 
 }

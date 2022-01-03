@@ -12,4 +12,14 @@ interface ApiService {
             @Query("type", encoded = true) type: String,
             @Query("participants", encoded = true) participants: Int
     ): Call<Response>
+
+    @GET("activity")
+    fun getActivitiesByPriceRange(
+        @Query("minprice", encoded = true) type: String,
+        @Query("maxprice", encoded = true) participants: Int
+    ): Call<Response>
+
+    @GET("activity")
+    fun getRandomActivity(
+    ): Call<Response>
 }

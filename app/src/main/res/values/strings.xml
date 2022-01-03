@@ -40,4 +40,5 @@ tempus purus et odio senectus sodales vulputate, ligula malesuada dis habitasse
 nullam pellentesque.</string>
     <string name="terms">Terms and Conditions</string>
     <string name="random">Random</string>
+    <string name="checkbox">I accept the terms and conditions</string>
 </resources>

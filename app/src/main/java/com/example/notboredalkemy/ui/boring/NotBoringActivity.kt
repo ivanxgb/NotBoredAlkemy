@@ -15,12 +15,13 @@ class NotBoringActivity : AppCompatActivity() {
 
     private val viewModel: NotBoringViewModel by viewModel()
     private var dataResponse: Response? = null
+    private var categorySelected: Boolean = Utils.isCategorySelected
     private val type: String = Utils.category
     private val participants: Int = Utils.participants
     private var money: String = Constants.EMPTY
-    private val low = Constants.low
-    private val medium = Constants.medium
-    private  val high = Constants.high
+    private val low = Utils.low
+    private val medium = Utils.medium
+    private  val high = Utils.high
     private lateinit var binding: ActivityNotBoringBinding
     private lateinit var bindingToolbar: ToolbarBaseBinding
 
@@ -32,7 +33,15 @@ class NotBoringActivity : AppCompatActivity() {
         setUpTextInToolbar()
         setUpObserver()
         setUpOnClickListener()
-        viewModel.getActivities(type, participants)
+        validateCategorySelected(categorySelected)
+    }
+
+    private fun validateCategorySelected(categorySelected: Boolean) {
+        if(categorySelected){
+            viewModel.getActivities(type, participants)
+        }else{
+            viewModel.getRandomActivity()
+        }
     }
 
     private fun setUpOnClickListener() {
@@ -56,6 +65,15 @@ class NotBoringActivity : AppCompatActivity() {
                 false -> showErrorLayout()
             }
         })
+        viewModel.dataResponseRandomActivity.observe(this, { response ->
+            when(response.first){
+                true -> {
+                    dataResponse = response.second as Response
+                    fillActivityText(dataResponse)
+                }
+                false -> showErrorLayout()
+            }
+        })
     }
 
     private fun fillActivityText(dataResponse: Response?) {
@@ -68,10 +86,10 @@ class NotBoringActivity : AppCompatActivity() {
     private fun setUpPriceRange(price: Double?): String {
         price?.run {
             money = when (price) {
-                in low -> "low"
-                in medium -> "medium"
-                in high -> "high"
-                else -> "free"
+                in low -> Constants.LOW
+                in medium -> Constants.MEDIUM
+                in high -> Constants.HIGH
+                else -> Constants.FREE
             }
         }
         return money

@@ -32,5 +32,4 @@ class BoringAdapter(
             binding.clCategory.setOnClickListener { listenerCategory.invoke(category) }
         }
     }
-
 }

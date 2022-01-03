@@ -1,6 +1,7 @@
 package com.example.notboredalkemy.data.repository.boring
 
 import com.example.notboredalkemy.data.Result
+import com.example.notboredalkemy.data.local.SharedPreferenceHelper
 import com.example.notboredalkemy.data.model.Response
 import com.example.notboredalkemy.data.remote.ApiService
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -11,9 +12,9 @@ import retrofit2.Callback
 
 @ExperimentalCoroutinesApi
 class BoringRepositoryImpl(
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val preferencesHelper: SharedPreferenceHelper
 ) : BoringRepository {
-
 
     override suspend fun getActivityType(type: String, participants: Int): Result<Any> =
         suspendCancellableCoroutine { cancellableContinuation ->
@@ -31,6 +32,10 @@ class BoringRepositoryImpl(
                     cancellableContinuation.resume(Result.error(t.message), null)
                 }
             })
-
         }
+
+    override suspend fun getRandomActivity(): Result<Any> =
+        suspendCancellableCoroutine { cancellableContinuation ->
+            cancellableContinuation.resume(Result.success(preferencesHelper.getCategory()), null)
+    }
 }

@@ -12,6 +12,7 @@ import com.example.notboredalkemy.databinding.ToolbarBaseBinding
 import com.example.notboredalkemy.ui.adapter.BoringAdapter
 import com.example.notboredalkemy.ui.boring.NotBoringActivity
 import com.example.notboredalkemy.utils.Utils
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CategoryActivity : AppCompatActivity() {
@@ -37,6 +38,9 @@ class CategoryActivity : AppCompatActivity() {
         bindingToolbar = ToolbarBaseBinding.bind(binding.root)
         bindingToolbar.tvToolbarTitle.text = getString(R.string.activitiesUI)
         bindingToolbar.btnRandom.isVisible = true
+        bindingToolbar.btnBack.isVisible = true
+        bindingToolbar.btnBack.setOnClickListener { finish() }
+        bindingToolbar.btnRandom.setOnClickListener { viewModel.getRandomCategory() }
     }
 
     private fun setUpRecyclerView() {
@@ -51,6 +55,7 @@ class CategoryActivity : AppCompatActivity() {
 
     private fun callbackCategory(category: String) {
         Utils.category = category
+        Utils.isCategorySelected = true
         startActivity(Intent(this, NotBoringActivity::class.java))
     }
 
@@ -59,6 +64,12 @@ class CategoryActivity : AppCompatActivity() {
             when (response.first) {
                 true -> listOfCategories.addAll(response.second as MutableList<String>)
                 false -> noCategoriesAvailable()
+            }
+        })
+        viewModel.dataResponseRandom.observe(this, { response ->
+            when(response.first){
+            true -> startActivity(Intent(this, NotBoringActivity::class.java))
+            false ->  Snackbar.make(binding.root, getString(R.string.app_name), Snackbar.LENGTH_SHORT).show()
             }
         })
     }

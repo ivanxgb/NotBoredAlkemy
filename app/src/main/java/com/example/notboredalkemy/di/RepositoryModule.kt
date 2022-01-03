@@ -9,6 +9,6 @@ import org.koin.dsl.module
 
 @ExperimentalCoroutinesApi
 val repositoryModule =  module{
-    single<CategoryRepository> { CategoryRepositoryImpl() }
-    single<BoringRepository> { BoringRepositoryImpl(get()) }
+    single<CategoryRepository> { CategoryRepositoryImpl(get(), get()) }
+    single<BoringRepository> { BoringRepositoryImpl(get(), get()) }
 }
