@@ -45,7 +45,18 @@
         app:layout_constraintTop_toBottomOf="@id/tvParticipants"
         app:layout_constraintStart_toStartOf="parent"
         android:digits="0123456789"
-        android:hint="@string/hintET" />
+        android:hint="@string/hintET"
+        android:importantForAutofill="no" />
+
+    <CheckBox
+        android:id="@+id/chPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/results_by_price"
+        app:layout_constraintBottom_toTopOf="@+id/btnStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etParticipants"
+        />
 
     <Button
         android:id="@+id/btnStart"
@@ -56,7 +67,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/btnStart"
-
     />
 
     <TextView

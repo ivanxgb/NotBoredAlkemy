@@ -6,9 +6,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.boring.NotBoringActivity"
     >
-    <include layout="@layout/toolbar_base" />
 
-    <TextView
+    <include
+        android:id="@+id/lyNotFound"
+        layout="@layout/not_found"
+        android:visibility="invisible"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lyActivity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        >
+
+        <include layout="@layout/toolbar_base" />
+
+        <TextView
         android:id="@+id/tvActivityName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,14 +141,17 @@
     <Button
         android:id="@+id/btnTryAnother"
         android:layout_marginHorizontal="@dimen/marginM"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Try Another"
+        android:text="@string/try_another"
         app:layout_constraintTop_toBottomOf="@id/viewCategory"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

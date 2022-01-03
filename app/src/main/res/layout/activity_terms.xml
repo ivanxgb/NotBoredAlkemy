@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="@dimen/marginL"
         android:background="#00000000"
-        tools:ignore="ContentDescription" />
+        android:contentDescription="@string/button_close" />
 
     <TextView
         android:id="@+id/tvTerms"
