@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:padding="@dimen/marginM"
+    android:paddingHorizontal="@dimen/marginM"
     tools:context=".ui.home.HomeActivity">
 
     <TextView
@@ -13,7 +13,7 @@
         style="@style/MaterialAlertDialog.MaterialComponents.Title.Text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
+        android:layout_marginTop="@dimen/marginXXL"
         android:text="@string/appTitle"
         android:textColor="#0c91e8"
         android:textSize="48sp"
@@ -26,7 +26,7 @@
         style="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="@dimen/marginXXL"
         android:text="@string/participants"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,17 +36,17 @@
         android:id="@+id/etParticipants"
         style="@style/Widget.AppCompat.EditText"
         android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:layout_marginTop="8dp"
-        android:background="#fff"
+        android:layout_height="@dimen/marginL"
+        android:layout_marginTop="@dimen/marginS"
+        android:background="@drawable/rounded_corner_et"
         android:digits="0123456789"
         android:ems="10"
         android:hint="@string/hintET"
+        android:importantForAutofill="no"
         android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingHorizontal="@dimen/marginM"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvParticipants"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toBottomOf="@id/tvParticipants" />
 
     <CheckBox
         android:id="@+id/chPrice"
@@ -64,37 +64,11 @@
         android:valueFrom="0.0"
         android:valueTo="1.0"
         android:visibility="invisible"
-        app:values="@array/initial_slider_values"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chPrice"
+        app:values="@array/initial_slider_values"
         tools:visibility="visible" />
-
-    <Button
-        android:id="@+id/btnStart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btnStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etParticipants"
-        />
-
-    <TextView
-        android:id="@+id/tvTerms"
-        style="@style/TextAppearance.AppCompat.Body1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/terms_and_conditions"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnStart"
-        app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
         android:id="@+id/checkBox"
@@ -105,8 +79,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/slider"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/slider" />
 
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/slider" />
+
+    <TextView
+        android:id="@+id/tvTerms"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginS"
+        android:text="@string/terms_and_conditions"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnStart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

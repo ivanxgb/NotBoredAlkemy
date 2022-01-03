@@ -56,9 +56,13 @@ class NotBoringActivity : AppCompatActivity() {
     private fun setUpOnClickListener() {
         binding.btnTryAnother.setOnClickListener {
             if(categorySelected){
-                viewModel.getActivities(type, participants)
+                if(priceSelected){
+                    viewModel.getActivityByPriceRange(type, participants, minPrice, maxPrice)
+                }else{
+                    viewModel.getActivities(type, participants)
+                }
             }else{
-                viewModel.getRandomActivityService()
+                viewModel.getRandomActivityPrice(minPrice, maxPrice)
             }
         }
     }
@@ -98,7 +102,7 @@ class NotBoringActivity : AppCompatActivity() {
                 false -> showErrorLayout()
             }
         })
-        viewModel.dataResponseRandomActivityService.observe(this, { response ->
+        viewModel.dataResponseRandomActivityPrice.observe(this, { response ->
             when(response.first){
                 true -> {
                     dataResponse = response.second as Response

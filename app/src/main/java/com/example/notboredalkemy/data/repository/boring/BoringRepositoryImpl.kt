@@ -56,12 +56,14 @@ class BoringRepositoryImpl(
             cancellableContinuation.resume(Result.success(preferencesHelper.getCategory()), null)
     }
 
-    override suspend fun getRandomActivityService(): Result<Any> =
+
+    override suspend fun getRandomActivityPrice(minPrice: Double, maxPrice: Double): Result<Any> =
         suspendCancellableCoroutine { cancellableContinuation ->
-            val call: Call<Response> = apiService.getRandomActivity()
+            val call: Call<Response> = apiService.getRandomByPriceRange(minPrice, maxPrice)
             call.enqueue(object : Callback<Response> {
                 override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>, ) {
                     if (response.isSuccessful) {
+                        response.body()?.let { preferencesHelper.saveCategory(it) }
                         cancellableContinuation.resume(Result.success(response.body()), null)
                     } else {
                         cancellableContinuation.resume(Result.error(response.errorBody()), null)

@@ -18,8 +18,8 @@ class NotBoringViewModel(
     val dataResponseActivityPrice: LiveData<Pair<Boolean, Any?>> get() = _dataResponseActivityPrice
     private val _dataResponseRandomActivity: MutableLiveData<Pair<Boolean, Any?>> = MutableLiveData()
     val dataResponseRandomActivity: LiveData<Pair<Boolean, Any?>> get() = _dataResponseRandomActivity
-    private val _dataResponseRandomActivityService: MutableLiveData<Pair<Boolean, Any?>> = MutableLiveData()
-    val dataResponseRandomActivityService: LiveData<Pair<Boolean, Any?>> get() = _dataResponseRandomActivityService
+    private val _dataResponseRandomActivityPrice: MutableLiveData<Pair<Boolean, Any?>> = MutableLiveData()
+    val dataResponseRandomActivityPrice: LiveData<Pair<Boolean, Any?>> get() = _dataResponseRandomActivityPrice
 
     fun getActivities(type: String, participants: Int){
         viewModelScope.launch {
@@ -51,12 +51,13 @@ class NotBoringViewModel(
         }
     }
 
-    fun getRandomActivityService(){
+
+    fun getRandomActivityPrice(minPrice: Double, maxPrice: Double){
         viewModelScope.launch {
-            val response = repository.getRandomActivityService()
+            val response = repository.getRandomActivityPrice(minPrice, maxPrice)
             when(response.status){
-                Result.Status.SUCCESS -> _dataResponseRandomActivityService.value = Pair(true, response.data)
-                Result.Status.ERROR -> _dataResponseRandomActivityService.value = Pair(false, response.data)
+                Result.Status.SUCCESS -> _dataResponseRandomActivityPrice.value = Pair(true, response.data)
+                Result.Status.ERROR -> _dataResponseRandomActivityPrice.value = Pair(false, response.data)
             }
         }
     }
