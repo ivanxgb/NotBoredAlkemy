@@ -53,16 +53,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/results_by_price"
-        app:layout_constraintBottom_toTopOf="@+id/btnStart"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etParticipants"
+        />
+
+    <com.google.android.material.slider.RangeSlider
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:valueFrom="0.0"
+        android:valueTo="100.0"
+        android:stepSize="10.0"
+        app:layout_constraintTop_toBottomOf="@id/chPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"
         />
 
     <Button
         android:id="@+id/btnStart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/etParticipants"
+        app:layout_constraintTop_toBottomOf="@id/slider"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
