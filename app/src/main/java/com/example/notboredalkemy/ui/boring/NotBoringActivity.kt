@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import com.example.notboredalkemy.R
 import com.example.notboredalkemy.data.model.Response
 import com.example.notboredalkemy.databinding.ActivityNotBoringBinding
+import com.example.notboredalkemy.databinding.NotFoundBinding
 import com.example.notboredalkemy.databinding.ToolbarBaseBinding
 import com.example.notboredalkemy.utils.Constants
 import com.example.notboredalkemy.utils.Utils
@@ -16,6 +17,9 @@ class NotBoringActivity : AppCompatActivity() {
     private val viewModel: NotBoringViewModel by viewModel()
     private var dataResponse: Response? = null
     private var categorySelected: Boolean = Utils.isCategorySelected
+    private var priceSelected: Boolean = Utils.isPriceSelected
+    private var minPrice: Double = Utils.minPrice
+    private var maxPrice: Double = Utils.maxPrice
     private val type: String = Utils.category
     private val participants: Int = Utils.participants
     private var money: String = Constants.EMPTY
@@ -24,6 +28,7 @@ class NotBoringActivity : AppCompatActivity() {
     private  val high = Utils.high
     private lateinit var binding: ActivityNotBoringBinding
     private lateinit var bindingToolbar: ToolbarBaseBinding
+    private lateinit var bindingNotFound: NotFoundBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,19 +43,28 @@ class NotBoringActivity : AppCompatActivity() {
 
     private fun validateCategorySelected(categorySelected: Boolean) {
         if(categorySelected){
-            viewModel.getActivities(type, participants)
+            if(priceSelected){
+                viewModel.getActivityByPriceRange(type, participants, minPrice, maxPrice)
+            }else{
+                viewModel.getActivities(type, participants)
+            }
         }else{
             viewModel.getRandomActivity()
         }
     }
 
     private fun setUpOnClickListener() {
-        binding.btnTryAnother.setOnClickListener { viewModel.getActivities(type, participants) }
+        binding.btnTryAnother.setOnClickListener {
+            if(categorySelected){
+                viewModel.getActivities(type, participants)
+            }else{
+                viewModel.getRandomActivityService()
+            }
+        }
     }
 
     private fun setUpTextInToolbar() {
         bindingToolbar = ToolbarBaseBinding.bind(binding.root)
-        bindingToolbar.tvToolbarTitle.text = Utils.category
         bindingToolbar.btnBack.isVisible = true
         bindingToolbar.btnBack.setOnClickListener { finish() }
     }
@@ -68,6 +82,25 @@ class NotBoringActivity : AppCompatActivity() {
         viewModel.dataResponseRandomActivity.observe(this, { response ->
             when(response.first){
                 true -> {
+                    binding.viewCategory.isVisible = true
+                    dataResponse = response.second as Response
+                    fillActivityText(dataResponse)
+                }
+                false -> showErrorLayout()
+            }
+        })
+        viewModel.dataResponseActivityPrice.observe(this, { response ->
+            when(response.first){
+                true -> {
+                    dataResponse = response.second as Response
+                    fillActivityText(dataResponse)
+                }
+                false -> showErrorLayout()
+            }
+        })
+        viewModel.dataResponseRandomActivityService.observe(this, { response ->
+            when(response.first){
+                true -> {
                     dataResponse = response.second as Response
                     fillActivityText(dataResponse)
                 }
@@ -81,6 +114,7 @@ class NotBoringActivity : AppCompatActivity() {
         binding.tvActivityName.text = dataResponse?.activity
         binding.tvParticipantsNumber.text = dataResponse?.participants.toString()
         binding.tvCategory.text = dataResponse?.type
+        bindingToolbar.tvToolbarTitle.text = dataResponse?.type
     }
 
     private fun setUpPriceRange(price: Double?): String {
@@ -96,6 +130,7 @@ class NotBoringActivity : AppCompatActivity() {
     }
 
     private fun showErrorLayout() {
-        val a = 0
+        binding.lyActivity.isVisible = false
+        bindingNotFound.lyNotfound.isVisible = true
     }
 }

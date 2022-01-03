@@ -31,10 +31,17 @@ class CategoryViewModel(
         viewModelScope.launch {
             val response = repository.getRandomCategory()
             when (response.status) {
-                Result.Status.SUCCESS -> {
-                    _dataResponseRandom.value = Pair(true, response.data)
+                Result.Status.SUCCESS -> _dataResponseRandom.value = Pair(true, response.data)
+                Result.Status.ERROR -> _dataResponseRandom.value = Pair(false, "Error")
+            }
+        }
+    }
 
-                }
+    fun getRandomCategoryByPrice(minPrice: Double, maxPrice: Double){
+        viewModelScope.launch {
+            val response = repository.getRandomByPrice(minPrice, maxPrice)
+            when (response.status) {
+                Result.Status.SUCCESS -> _dataResponseRandom.value = Pair(true, response.data)
                 Result.Status.ERROR -> _dataResponseRandom.value = Pair(false, "Error")
             }
         }

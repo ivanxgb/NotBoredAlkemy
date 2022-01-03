@@ -9,8 +9,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 class SharedPreferenceHelper(
-    application: Application
-) {
+    application: Application) {
 
     private val sharedPreferences: SharedPreferences = application.getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
 
@@ -18,7 +17,6 @@ class SharedPreferenceHelper(
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(Constants.KEY_CATEGORY, Gson().toJson(value))
         editor.apply()
-
     }
 
     fun getCategory(): Response {

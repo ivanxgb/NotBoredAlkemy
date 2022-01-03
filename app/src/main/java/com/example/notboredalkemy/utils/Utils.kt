@@ -9,4 +9,7 @@ object Utils {
     var participants = 1
     var category: String = Constants.EMPTY
     var isCategorySelected: Boolean = false
+    var isPriceSelected: Boolean = false
+    var minPrice: Double = 0.0
+    var maxPrice: Double = 1.0
 }

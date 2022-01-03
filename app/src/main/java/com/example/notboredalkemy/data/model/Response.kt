@@ -7,5 +7,6 @@ data class Response(
     val participants: Int,
     val price: Double,
     val link: String,
-    val key: Long
+    val key: Long,
+    val error: String
 )

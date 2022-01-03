@@ -6,4 +6,5 @@ interface CategoryRepository {
 
     suspend fun getListOfCategories(): Result<Any>
     suspend fun getRandomCategory(): Result<Any>
+    suspend fun getRandomByPrice(minPrice: Double, maxPrice: Double): Result<Any>
 }

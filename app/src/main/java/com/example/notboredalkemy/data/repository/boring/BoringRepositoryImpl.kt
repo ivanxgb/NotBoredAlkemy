@@ -34,8 +34,43 @@ class BoringRepositoryImpl(
             })
         }
 
+    override suspend fun getActivityByPriceRange(type: String, participants: Int, minPrice: Double, maxPrice: Double): Result<Any> =
+        suspendCancellableCoroutine { cancellableContinuation ->
+            val call: Call<Response> = apiService.getActivitiesByPriceRange(type, participants, minPrice, maxPrice)
+            call.enqueue(object : Callback<Response> {
+                override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
+                    if (response.isSuccessful) {
+                        cancellableContinuation.resume(Result.success(response.body()), null)
+                    } else {
+                        cancellableContinuation.resume(Result.error(response.errorBody()), null)
+                    }
+                }
+                override fun onFailure(call: Call<Response>, t: Throwable) {
+                    cancellableContinuation.resume(Result.error(t.message), null)
+                }
+            })
+        }
+
     override suspend fun getRandomActivity(): Result<Any> =
         suspendCancellableCoroutine { cancellableContinuation ->
             cancellableContinuation.resume(Result.success(preferencesHelper.getCategory()), null)
     }
+
+    override suspend fun getRandomActivityService(): Result<Any> =
+        suspendCancellableCoroutine { cancellableContinuation ->
+            val call: Call<Response> = apiService.getRandomActivity()
+            call.enqueue(object : Callback<Response> {
+                override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>, ) {
+                    if (response.isSuccessful) {
+                        cancellableContinuation.resume(Result.success(response.body()), null)
+                    } else {
+                        cancellableContinuation.resume(Result.error(response.errorBody()), null)
+                    }
+                }
+                override fun onFailure(call: Call<Response>, t: Throwable) {
+                    cancellableContinuation.resume(Result.error(t.message), null)
+                }
+            })
+        }
 }
+

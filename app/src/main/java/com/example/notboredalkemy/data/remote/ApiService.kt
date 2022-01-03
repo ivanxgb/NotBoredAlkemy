@@ -15,11 +15,18 @@ interface ApiService {
 
     @GET("activity")
     fun getActivitiesByPriceRange(
-        @Query("minprice", encoded = true) type: String,
-        @Query("maxprice", encoded = true) participants: Int
+        @Query("type", encoded = true) type: String,
+        @Query("participants", encoded = true) participants: Int,
+        @Query("minprice", encoded = true) minPrice: Double,
+        @Query("maxprice", encoded = true) maxPrice: Double
     ): Call<Response>
 
     @GET("activity")
-    fun getRandomActivity(
+    fun getRandomByPriceRange(
+        @Query("minprice", encoded = true) minPrice: Double,
+        @Query("maxprice", encoded = true) maxPrice: Double
     ): Call<Response>
+
+    @GET("activity")
+    fun getRandomActivity(): Call<Response>
 }

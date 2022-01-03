@@ -12,11 +12,15 @@ import com.example.notboredalkemy.databinding.ToolbarBaseBinding
 import com.example.notboredalkemy.ui.adapter.BoringAdapter
 import com.example.notboredalkemy.ui.boring.NotBoringActivity
 import com.example.notboredalkemy.utils.Utils
-import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class CategoryActivity : AppCompatActivity() {
 
+
+    private var minPrice: Double = Utils.minPrice
+    private var maxPrice: Double = Utils.maxPrice
+    private var priceSelected: Boolean = Utils.isPriceSelected
     private var recyclerView: RecyclerView? = null
     private var mAdapter: BoringAdapter? = null
     private val viewModel: CategoryViewModel by viewModel()
@@ -40,7 +44,14 @@ class CategoryActivity : AppCompatActivity() {
         bindingToolbar.btnRandom.isVisible = true
         bindingToolbar.btnBack.isVisible = true
         bindingToolbar.btnBack.setOnClickListener { finish() }
-        bindingToolbar.btnRandom.setOnClickListener { viewModel.getRandomCategory() }
+        bindingToolbar.btnRandom.setOnClickListener {
+            Utils.isCategorySelected = false
+            if(priceSelected){
+                viewModel.getRandomCategoryByPrice(minPrice, maxPrice)
+            }else{
+                viewModel.getRandomCategory()
+            }
+        }
     }
 
     private fun setUpRecyclerView() {
@@ -69,7 +80,7 @@ class CategoryActivity : AppCompatActivity() {
         viewModel.dataResponseRandom.observe(this, { response ->
             when(response.first){
             true -> startActivity(Intent(this, NotBoringActivity::class.java))
-            false ->  Snackbar.make(binding.root, getString(R.string.app_name), Snackbar.LENGTH_SHORT).show()
+            false -> noCategoriesAvailable()
             }
         })
     }

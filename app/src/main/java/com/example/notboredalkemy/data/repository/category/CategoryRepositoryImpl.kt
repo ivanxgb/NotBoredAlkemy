@@ -40,6 +40,24 @@ class CategoryRepositoryImpl(
                     cancellableContinuation.resume(Result.error(t.message), null)
                 }
             })
-
         }
+
+    override suspend fun getRandomByPrice(minPrice: Double, maxPrice: Double): Result<Any> =
+        suspendCancellableCoroutine { cancellableContinuation ->
+            val call: Call<Response> = apiService.getRandomByPriceRange(minPrice, maxPrice)
+            call.enqueue(object : Callback<Response> {
+                override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>, ) {
+                    if (response.isSuccessful) {
+                        response.body()?.let { preferencesHelper.saveCategory(it) }
+                        cancellableContinuation.resume(Result.success(response.body()), null)
+                    } else {
+                        cancellableContinuation.resume(Result.error(response.errorBody()), null)
+                    }
+                }
+                override fun onFailure(call: Call<Response>, t: Throwable) {
+                    cancellableContinuation.resume(Result.error(t.message), null)
+                }
+            })
+        }
+
 }

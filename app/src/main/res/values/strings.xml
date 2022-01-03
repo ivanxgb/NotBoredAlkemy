@@ -38,7 +38,15 @@ class facilisi curabitur quisque, fusce vulputate semper a nulla velit, duis in 
 faucibus turpis. Risus metus magnis aliquam accumsan laoreet congue per,
 tempus purus et odio senectus sodales vulputate, ligula malesuada dis habitasse
 nullam pellentesque.</string>
+    <string name="money">Money</string>
     <string name="terms">Terms and Conditions</string>
     <string name="random">Random</string>
     <string name="checkbox">I accept the terms and conditions</string>
+    <string name="code_404">404</string>
+    <string name="not_found_error">No activity found with the specified parameters</string>
+    <string name="oops">Oops!</string>
+    <string name="go_back">Go Back</string>
+    <string name="button_close">Button Close</string>
+    <string name="try_another">Try Another</string>
+    <string name="results_by_price">Results by price?</string>
 </resources>
